@@ -1,7 +1,14 @@
 use std::io; // bring io library in standard library into scope
+use rand::Rng; // items from traits can only be used if the trait is in scope
 
 fn main() {
     println!("Guess the number!");
+
+    // range expression
+    // 1<=x<=100 -> 1..=100
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!("The secret number is {}",secret_number);
 
     println!("Please input your guess.");
 

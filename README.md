@@ -30,6 +30,15 @@ cargo build : build with default mode debug
 - debug : fast build but slow run
 - release : slow build but fast run
 
+cargo doc --open : build documentation provided by all dependencies locally and open it in your browser
+
+
+crate : a collection of Rust source code files
+- binary crate : executable
+- library crate : not executable. intended to be used in other programs
+
+[Crates.io](https://crates.io/) : registry of Rust dependency
+
 ```bash
 # create new project
 cargo new hello_cargo
