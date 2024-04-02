@@ -11,34 +11,39 @@ fn main() {
 
     println!("The secret number is {}", secret_number);
 
-    println!("Please input your guess.");
+    loop {
+        println!("Please input your guess.");
 
-    // let : a statement to create variable
-    // variables are immutable by default
-    // mut : mutable
-    // String::new : new is an associated function of the String type
-    // associated function : a function that is implemented on a type
-    let mut guess = String::new();
+        // let : a statement to create variable
+        // variables are immutable by default
+        // mut : mutable
+        // String::new : new is an associated function of the String type
+        // associated function : a function that is implemented on a type
+        let mut guess = String::new();
 
-    // & : indicates that an argument is a reference.
-    // reference is immutable by default
-    io::stdin()
-        .read_line(&mut guess)
-        .expect("Failed to read line");
+        // & : indicates that an argument is a reference.
+        // reference is immutable by default
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("Failed to read line");
 
-    // Shadowing : reuse the variable name to convert from one type to another
-    // u32 : unsigned 32 bit integer
-    let guess: u32 = guess.trim().parse().expect("Please type a number!");
+        // Shadowing : reuse the variable name to convert from one type to another
+        // u32 : unsigned 32 bit integer
+        let guess: u32 = guess.trim().parse().expect("Please type a number!");
 
-    println!("You guessed: {guess}");
+        println!("You guessed: {guess}");
 
-    // match : decide what to do next based on the return value
-    // match expression is made up of arms
-    // arm : pattern + code that should be run if the value given to match fits that arm's pattern
-    // match expression ends after the first successful match -> different with switch case that needs break
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small!"),
-        Ordering::Greater => println!("Too big!"),
-        Ordering::Equal => println!("You win!"),
+        // match : decide what to do next based on the return value
+        // match expression is made up of arms
+        // arm : pattern + code that should be run if the value given to match fits that arm's pattern
+        // match expression ends after the first successful match -> different with switch case that needs break
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            }
+        }
     }
 }
