@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Rust 소스 파일 모두 찾기
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.rs$')
+
+# 파일이 없으면 빠져나감
+if [ -z "$FILES" ]; then
+  exit 0
+fi
+
+# 스테이징 영역의 Rust 파일 포맷팅
+echo "$FILES" | xargs -n 1 rustfmt
+
+# 포맷팅된 파일을 스테이징 영역에 추가
+echo "$FILES" | xargs git add
+
+exit 0
