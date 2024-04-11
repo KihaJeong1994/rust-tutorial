@@ -32,6 +32,7 @@ fn statement_example() {
 fn expression_example() {
     let y = {
         let x = 3;
+        // the blocks of the code {...}  evaluate to the last expression in them
         x + 1 // no semicolon. If you add semicolon, it will be treated as Statement, and does not evaluate to value, but unit type ()
     };
     println!("The value of y is {y}");
